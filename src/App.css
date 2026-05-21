@@ -1,20 +1,25 @@
-/* Clean and minimal - All styling handled by Tailwind CSS */
+/* Estilos complementarios — sin sobrescribir utilidades Tailwind */
 
-/* Smooth scrolling behavior */
-html {
-  scroll-behavior: smooth;
+:root {
+  --color-accent: #c99c70;
+  --color-bg: #f4f4f4;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-premium: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --transition-fast: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* Imágenes de tarjetas: no aplicar height:auto global */
+img[data-cover] {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @keyframes fadeIn {
@@ -26,47 +31,54 @@ html {
   }
 }
 
-/* Utility animations */
-.animate-slide-in-up {
-  animation: slideInUp 0.6s ease-out;
-}
-
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 0.8s var(--transition-smooth) forwards;
 }
 
-/* Image optimization */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.shadow-subtle {
+  box-shadow: var(--shadow-subtle);
 }
 
-/* Smooth transitions for all elements */
-* {
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
 }
 
-/* Focus states for accessibility */
+input[type='email']:focus {
+  outline: none;
+}
+
 button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--accent);
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* Print styles */
-@media print {
-  body {
-    background: white;
-    color: black;
-  }
+::selection {
+  background-color: rgba(201, 156, 112, 0.25);
+  color: #0a0a0a;
+}
 
-  a {
-    color: black;
-    text-decoration: underline;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c99c70;
+  border-radius: 5px;
+  border: 2px solid var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

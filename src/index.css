@@ -1,22 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@plugin "@tailwindcss/typography";
+
+/* Variables y estilos base — Atelier • Espacios */
 
 :root {
-  --text: #0A0A0A;
+  --text: #0a0a0a;
   --text-light: #666666;
-  --bg: #F4F4F4;
-  --container: #FFFFFF;
-  --accent: #C99C70;
-  --cta: #1D1D1D;
-  --border: #E5E5E5;
+  --bg: #f4f4f4;
+  --container: #ffffff;
+  --accent: #c99c70;
+  --cta: #1d1d1d;
+  --border: #e5e5e5;
+  --border-light: #f0f0f0;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-premium: 0 8px 24px rgba(0, 0, 0, 0.08);
 
-  font: 16px/1.6 var(--sans);
-  letter-spacing: 0px;
+  font: 16px/1.6 system-ui, "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
   color-scheme: light;
   color: var(--text);
   background: var(--bg);
@@ -26,29 +27,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
 a {
@@ -61,8 +59,9 @@ button {
   font-family: inherit;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: inherit;
   font-size: inherit;
 }
-

@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import {
   Navbar,
   Hero,
+  StudioIntro,
   ProjectGrid,
   ServiceAccordion,
   BookingCTA,
   Footer,
 } from './components';
-import './App.css';
 
 function App(): React.ReactElement {
   const handleBookingClick = useCallback(() => {
@@ -19,31 +19,25 @@ function App(): React.ReactElement {
 
   const handleBookingSubmit = useCallback((email: string) => {
     console.log('Booking request from:', email);
-    // Handle booking submission here (API call, etc.)
   }, []);
 
   return (
-    <div className="min-h-screen bg-atelier-bg">
-      {/* Navigation */}
+    <div className="atelier-page min-h-screen bg-[#F4F4F4] antialiased">
       <Navbar onBookingClick={handleBookingClick} />
 
-      {/* Hero Section */}
       <Hero
         title="Espacios que Inspiran"
         subtitle="Diseño arquitectónico de excelencia. Proyectos que transforman."
-        backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&h=800&fit=crop"
       />
 
-      {/* Projects Grid */}
+      <StudioIntro />
+
       <ProjectGrid />
 
-      {/* Services Accordion */}
       <ServiceAccordion />
 
-      {/* Booking CTA */}
       <BookingCTA onSubmit={handleBookingSubmit} />
 
-      {/* Footer */}
       <Footer
         contactEmail="contacto@atelierespcios.com"
         contactPhone="+54 11 1234-5678"

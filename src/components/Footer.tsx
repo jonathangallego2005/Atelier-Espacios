@@ -1,11 +1,13 @@
 import React from 'react';
+import { ExternalLink, Globe, Mail, MapPin, Phone, Share2 } from 'lucide-react';
+import { Logo } from './Logo';
 
-interface FooterLink {
+export interface FooterLink {
   label: string;
   href: string;
 }
 
-interface FooterProps {
+export interface FooterProps {
   contactEmail?: string;
   contactPhone?: string;
   location?: string;
@@ -27,70 +29,72 @@ export const Footer: React.FC<FooterProps> = ({
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-atelier-text text-atelier-container">
-      <div className="max-w-7xl mx-auto px-6 py-16 lg:py-20">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12 lg:mb-16">
-          {/* Brand Section */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img
-                src="/logo-atelier.png"
-                alt="Atelier Espacios"
-                className="h-8 w-auto invert"
-              />
-              <span className="text-lg font-light tracking-wide">Atelier • Espacios</span>
+    <footer id="contact" className="w-full bg-[#0A0A0A]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-8">
+              <Logo inverted className="h-6 sm:h-7 lg:h-8 w-auto object-contain" />
+              <span className="atelier-nav-brand text-white">Atelier • Espacios</span>
             </div>
-            <p className="text-atelier-container text-opacity-60 text-sm font-light leading-relaxed">
-              Diseño arquitectónico de excelencia para espacios que inspiran.
+            <p className="atelier-footer-text max-w-xs">
+              Diseño arquitectónico de excelencia para espacios que inspiran transformaciones.
             </p>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h3 className="text-sm font-light tracking-widest uppercase mb-6 text-atelier-accent">
-              Contacto
-            </h3>
-            <ul className="space-y-4">
+            <h3 className="atelier-footer-eyebrow">Contacto</h3>
+            <ul className="space-y-5">
               <li>
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="text-sm font-light hover:text-atelier-accent transition-colors duration-300"
-                >
+                <a href={`mailto:${contactEmail}`} className="atelier-footer-link inline-flex items-center gap-3">
+                  <Mail className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                   {contactEmail}
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${contactPhone.replace(/\s+/g, '')}`}
-                  className="text-sm font-light hover:text-atelier-accent transition-colors duration-300"
+                  className="atelier-footer-link inline-flex items-center gap-3"
                 >
+                  <Phone className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                   {contactPhone}
                 </a>
               </li>
-              <li className="text-sm font-light text-atelier-container text-opacity-70">
+              <li className="atelier-footer-text inline-flex items-start gap-3">
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5" strokeWidth={1.5} />
                 {location}
               </li>
             </ul>
           </div>
 
-          {/* Social Links */}
           <div>
-            <h3 className="text-sm font-light tracking-widest uppercase mb-6 text-atelier-accent">
-              Síguenos
-            </h3>
-            <ul className="space-y-3 flex flex-col">
+            <h3 className="atelier-footer-eyebrow">Servicios</h3>
+            <ul className="space-y-4">
+              {['Consultoría Arquitectónica', 'Diseño Arquitectónico', 'Dirección de Obra'].map(
+                (service) => (
+                  <li key={service}>
+                    <a href="#services" className="atelier-footer-link">
+                      {service}
+                    </a>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="atelier-footer-eyebrow">Síguenos</h3>
+            <ul className="space-y-4">
               <li>
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-light hover:text-atelier-accent transition-colors duration-300 inline-flex items-center gap-2"
+                  className="atelier-footer-link inline-flex items-center gap-3"
                 >
+                  <Share2 className="w-4 h-4" strokeWidth={1.5} />
                   Instagram
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  <ExternalLink className="w-3 h-3 opacity-50" strokeWidth={1.5} />
                 </a>
               </li>
               <li>
@@ -98,40 +102,30 @@ export const Footer: React.FC<FooterProps> = ({
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-light hover:text-atelier-accent transition-colors duration-300 inline-flex items-center gap-2"
+                  className="atelier-footer-link inline-flex items-center gap-3"
                 >
+                  <Globe className="w-4 h-4" strokeWidth={1.5} />
                   LinkedIn
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  <ExternalLink className="w-3 h-3 opacity-50" strokeWidth={1.5} />
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-atelier-container border-opacity-20 py-8 lg:py-12">
-          {/* Legal Links */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-            <ul className="flex flex-wrap gap-6">
-              {legalLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-light text-atelier-container text-opacity-60 hover:text-atelier-accent transition-colors duration-300 tracking-wide"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Copyright */}
-          <p className="text-xs font-light text-atelier-container text-opacity-50 text-center md:text-left">
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <p className="atelier-footer-legal">
             © {currentYear} Atelier • Espacios. Todos los derechos reservados.
           </p>
+          <ul className="flex flex-wrap items-center gap-6">
+            {legalLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="atelier-footer-legal hover:text-[#C99C70] transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
